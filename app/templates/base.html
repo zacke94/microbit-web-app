@@ -1,0 +1,12 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}{{ title }} - Micro:bit{% else %}Welcome to Micro:bit{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        {% block app_content %}{% endblock %}
+    </div>
+{% endblock %}

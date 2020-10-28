@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+	<h1>Select where your Microbit's are located in your room (approximately)</h1>
+	<br><br>
+	<img src="{{ url_for('static', filename='koordinater.jpg') }}" alt="Picture of locations" width="400" height="=250"/>
+	<br><br><br>
+	<form action="/save-locations" class="form" method="POST">
+		<lable for="mb_A">Microbit A:</lable>
+		<select id="mb_A" name="mb_A">
+			<option value="A">A</option>
+			<option value="B">B</option>
+			<option value="C">C</option>
+			<option value="D">D</option>
+			<option value="E">E</option>
+			<option value="F">F</option>
+			<option value="G">G</option>
+			<option value="H">H</option>
+			<option value="I">H</option>
+		</select>
+		<br><br>
+		<lable for="mb_B">Microbit B:</lable>
+		<select id="mb_B" name="mb_B">
+			<option value="A">A</option>
+			<option value="B">B</option>
+			<option value="C">C</option>
+			<option value="D">D</option>
+			<option value="E">E</option>
+			<option value="F">F</option>
+			<option value="G">G</option>
+			<option value="H">H</option>
+			<option value="I">H</option>
+		</select>
+		<br><br>
+		<input type="submit" value="Save location">
+		<br><br>
+		<table class="table">
+			<h3>Your microbit's location</h3>
+			<tr>
+				<th>Microbit A</th>
+				<th>Microbit B</th>
+			</tr>
+			<tr>
+				{% if data %}
+					<td>{{ data["mb_A"] }}</td>
+					<td>{{ data["mb_B"] }}</td>
+				{% endif %}
+			</tr>
+		</table>
+	</form>
+	<br>
+	<h4><a href="{{ url_for('index') }}">Back</h4>
+{% endblock %}
+

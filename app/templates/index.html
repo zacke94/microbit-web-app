@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>Welcome!</h1>
+    <br><br>
+    <form action="/show-current-readings" method="POST">
+        <h3>Click to show readings from your Microbit's:</h3>
+        <input type="submit" value="Show readings">
+    </form>
+    <br><br>
+    <form action="/show-highest-lowest" method="POST">
+        <h3>Click here to show highest temperature and lowest light-level of all time:</h3>
+        <input type="submit" value="Show highest/lowest">
+    </form>
+    <br><br>
+    <form action="/select-locations" method="POST">
+        <h3>Click here to select your locations of your Microbit's in your room:</h3>
+        <input type="submit" value="Select locations">
+    </form>
+
+{% endblock %}

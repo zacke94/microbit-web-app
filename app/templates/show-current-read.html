@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+	<h1>Showing readings from Microbit's in real-time</h1>
+	<br><br>
+	<table class="table">
+		<h3>Microbit A</h3>
+		<tr>
+			<th>Temperature</th>
+			<th>Light-level</th>
+		</tr>
+		<tr>
+			{% if data %}
+				<td> {{ data["a_temp"] }} </td>
+				<td> {{ data["a_light"] }} </td>
+				<tr>
+					<th>Temperature warnings</th>
+					<th>Light warnings</th>
+				</tr>
+				<tr>
+					<td style="color:#ff0000">
+						{% if a_warnings %}
+							{{ a_warnings["a_temp"] }}
+						{% endif %}
+					</td>
+					<td style="color:#ff0000">
+						{% if a_warnings %}
+							{{ a_warnings["a_light"] }}
+						{% endif %}
+					</td>
+				</tr>
+			{% endif %}
+		</tr>
+	</table>
+	<br>
+	<table class="table">
+		<h3>Microbit B</h3>
+		<tr>
+			<th>Temperature</th>
+			<th>Light-level</th>
+		</tr>
+		<tr>
+			{% if data %}
+				<td> {{ data["b_temp"] }} </td>
+				<td> {{ data["b_light"] }} </td>
+				<tr>
+					<th>Temperature warnings</th>
+					<th>Light warnings</th>
+				</tr>
+				<tr>
+					<td style="color:#ff0000">
+						{% if b_warnings %}
+							{{ b_warnings["b_temp"] }}
+						{% endif %}
+					</td>
+					<td style="color:#ff0000">
+						{% if b_warnings %}
+							{{ b_warnings["b_light"] }}
+						{% endif %}
+					</td>
+				</tr>
+			{% endif %}
+		</tr>
+	</table>
+	<br>
+	<br>
+	<h4><a href="{{ url_for('index') }}">Back</h4>
+	<script>
+		function pageRedirect() {
+			window.location.reload()
+		}
+		setTimeout("pageRedirect()", 1000)
+	</script>
+{% endblock %}
+
